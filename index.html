@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="FinMMDocR: Benchmarking Financial Multimodal Reasoning with Scenario Awareness, Document Understanding, and Multi-Step Computation">
+  <meta property="og:title" content="FinMMDocR: Financial Multimodal Reasoning Benchmark"/>
+  <meta property="og:description" content="A novel benchmark for evaluating MLLMs on real-world financial numerical reasoning with implicit scenarios and long documents."/>
+  <meta property="og:url" content="https://bupt-reasoning-lab.github.io/FinMMDocR"/>
+  <!-- Path to banner image, optimal dimensions are 1200X630 -->
+  <meta property="og:image" content="static/images/teaser.png" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+  <meta name="twitter:title" content="FinMMDocR: Benchmarking Financial Multimodal Reasoning">
+  <meta name="twitter:description" content="New AAAI 2026 Benchmark: Scenario Awareness, Long-Doc Understanding, and Multi-Step Computation.">
+  <meta name="twitter:image" content="static/images/teaser.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta name="keywords" content="Financial Reasoning, Multimodal LLMs, Document Understanding, AAAI 2026, FinMMDocR">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>FinMMDocR</title>
+  <link rel="icon" type="image/jpeg" href="static/images/logo.png">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <!-- Title and Logo -->
+            <div style="display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 20px;">
+              <img src="static/images/logo.png" alt="Lab Logo" style="width: 80px; height: 80px; object-fit: contain;">
+              <h1 class="title is-1 publication-title">FinMMDocR</h1>
+            </div>
+            
+            <h2 class="title is-4">Benchmarking Financial Multimodal Reasoning with <br>Scenario Awareness, Document Understanding, and Multi-Step Computation</h2>
+            
+            <div class="is-size-5 publication-authors">
+              <!-- Authors (Top contribution group) -->
+              <span class="author-block">Zichen Tang<sup>1</sup>,</span>
+              <span class="author-block">Haihong E<sup>1*</sup>,</span>
+              <span class="author-block">Rongjin Li<sup>1</sup>,</span>
+              <span class="author-block">Jiacheng Liu<sup>1</sup>,</span>
+              <span class="author-block">Linwei Jia<sup>1</sup>,</span>
+              <span class="author-block">Zhuodi Hao<sup>1</sup>,</span>
+              <br>
+              <!-- Authors (Second group) -->
+              <span class="author-block">Zhongjun Yang<sup>1</sup>,</span>
+              <span class="author-block">Yuanze Li<sup>1</sup>,</span>
+              <span class="author-block">Haolin Tian<sup>1</sup>,</span>
+              <span class="author-block">Xinyi Hu<sup>1</sup>,</span>
+              <span class="author-block">Peizhi Zhao<sup>1</sup>,</span>
+              <span class="author-block">Yuan Liu<sup>1</sup>,</span>
+              <br>
+              <!-- Authors (Third group) -->
+              <span class="author-block">Zhengyu Wang<sup>1</sup>,</span>
+              <span class="author-block">Xianghe Wang<sup>1</sup>,</span>
+              <span class="author-block">Yiling Huang<sup>1</sup>,</span>
+              <span class="author-block">Xueyuan Lin<sup>2</sup>,</span>
+              <span class="author-block">Ruofei Bai<sup>1</sup>,</span>
+              <br>
+              <!-- Authors (Fourth group) -->
+              <span class="author-block">Zijian Xie<sup>1</sup>,</span>
+              <span class="author-block">Qian Huang<sup>1</sup>,</span>
+              <span class="author-block">Ruining Cao<sup>1</sup>,</span>
+              <span class="author-block">Haocheng Gao<sup>1</sup></span>
+            </div>
+
+            <div class="is-size-6 publication-authors" style="margin-top: 10px;">
+              <span class="author-block"><sup>1</sup>Beijing University of Posts and Telecommunications</span><br>
+              <span class="author-block"><sup>2</sup>Hithink RoyalFlush Information Network Co., Ltd.</span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><strong style="color: red;">AAAI 2026</strong></span>
+              <span class="eql-cntrb"><small><br><sup>*</sup>Corresponding author.</small></span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- Arxiv PDF link -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2512.24903" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+
+                <!-- Github link -->
+                <span class="link-block">
+                  <a href="https://github.com/BUPT-Reasoning-Lab/FinMMDocR" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+                <!-- Dataset link -->
+                <span class="link-block">
+                  <a href="https://huggingface.co/datasets/BUPT-Reasoning-Lab/FinMMDocR" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="far fa-images"></i></span>
+                    <span>Dataset</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image carousel -->
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container">
+        <div id="results-carousel" class="carousel results-carousel">
+          
+          <div class="item">
+            <!-- Teaser Image (Figure 1 from paper) -->
+            <img src="static/images/teaser.png" alt="FinMMDocR Teaser"/>
+            <h2 class="subtitle has-text-centered">
+              <strong>Scenario Awareness & Multi-Step Reasoning:</strong> An example involving a US-China tariff conflict scenario. 
+              The model must integrate implicit assumptions, retrieve evidence from multiple pages (1, 15, 19), and perform a 12-step computation.
+            </h2>
+          </div>
+
+          <div class="item">
+            <!-- Examples (Figure 2 from paper) -->
+            <img src="static/images/examples.png" alt="FinMMDocR Examples"/>
+            <h2 class="subtitle has-text-centered">
+              <strong>Diversity of Scenarios:</strong> 12 financial scenarios covering 9 document categories. 
+              Tasks require expert scenario awareness (e.g., Portfolio Management) and handling visually rich documents.
+            </h2>
+          </div>
+
+          <div class="item">
+            <!-- Stats (Figure 3/4 from paper) -->
+            <img src="static/images/stats.png" alt="Benchmark Statistics"/>
+            <h2 class="subtitle has-text-centered">
+              <strong>Benchmark Statistics:</strong> FinMMDocR features 1,200 expert-annotated questions and 837 documents averaging 50.8 pages. 
+              57.9% of questions involve implicit financial scenarios.
+            </h2>
+          </div>
+
+          <div class="item">
+            <!-- Results (Table 3/Figure 5/6) -->
+            <img src="static/images/results.png" alt="Evaluation Results"/>
+            <h2 class="subtitle has-text-centered">
+              <strong>Evaluation Results:</strong> Best-performing MLLM (OpenAI o4-mini-high) achieves only 58.0% accuracy. 
+              Performance degrades significantly as scenario complexity and reasoning steps increase.
+            </h2>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End image carousel -->
+
+  <!-- Paper abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              We introduce <strong>FinMMDocR</strong>, a novel bilingual multimodal benchmark for evaluating multimodal large language models (MLLMs) 
+              on real-world financial numerical reasoning. Compared to existing benchmarks, our work delivers three major advancements.
+            </p>
+            <p>
+              <strong>(1) Scenario Awareness:</strong> 57.9% of 1,200 expert-annotated problems incorporate 12 types of implicit financial scenarios 
+              (e.g., Portfolio Management), challenging models to perform expert-level reasoning based on assumptions;
+            </p>
+            <p>
+              <strong>(2) Document Understanding:</strong> 837 Chinese/English documents spanning 9 types (e.g., Company Research) average 50.8 pages with rich visual elements, 
+              significantly surpassing existing benchmarks in both breadth and depth of financial documents;
+            </p>
+            <p>
+              <strong>(3) Multi-Step Computation:</strong> Problems demand 11-step reasoning on average (5.3 extraction + 5.7 calculation steps), 
+              with 65.0% requiring cross-page evidence (2.4 pages average).
+            </p>
+            <p>
+                The best-performing MLLM achieves only 58.0% accuracy, and different retrieval-augmented generation (RAG) methods show significant performance variations on this task. 
+                We expect FinMMDocR to drive improvements in MLLMs and reasoning-enhanced methods on complex multimodal reasoning tasks in real-world scenarios.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End paper abstract -->
+
+  <!-- Paper poster/PDF Viewer -->
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title">Paper</h2>
+        <iframe src="static/pdfs/FinMMDocR_AAAI2026.pdf" width="100%" height="550"></iframe>
+      </div>
+    </div>
+  </section>
+  <!-- End paper poster -->
+
+  <!-- BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@misc{tang2025finmmdocrbenchmarkingfinancialmultimodal,
+        title={FinMMDocR: Benchmarking Financial Multimodal Reasoning with Scenario Awareness, Document Understanding, and Multi-Step Computation}, 
+        author={Zichen Tang and Haihong E and Rongjin Li and Jiacheng Liu and Linwei Jia and Zhuodi Hao and Zhongjun Yang and Yuanze Li and Haolin Tian and Xinyi Hu and Peizhi Zhao and Yuan Liu and Zhengyu Wang and Xianghe Wang and Yiling Huang and Xueyuan Lin and Ruofei Bai and Zijian Xie and Qian Huang and Ruining Cao and Haocheng Gao},
+        year={2025},
+        eprint={2512.24903},
+        archivePrefix={arXiv},
+        primaryClass={cs.CV},
+        url={https://arxiv.org/abs/2512.24903}, 
+  }</code></pre>
+    </div>
+  </section>
+  <!-- End BibTex citation -->
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.
+              <br> This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
