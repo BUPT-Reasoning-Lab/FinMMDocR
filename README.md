@@ -2,7 +2,7 @@
 
 This project was developed with the assistance of modern AI-powered development tools, including Cursor IDE and Tongyi Qianwen. All code has been carefully reviewed to ensure originality and compliance with best practices. The implementation represents original work by the authors.
 
-The data and code for the paper `FinMMDocR: Benchmarking Financial Multimodal Reasoning with Scenario Awareness, Document Understanding, and Multi-Step Computation`.
+The data and code for the AAAI 2026 paper *FinMMDocR: Benchmarking Financial Multimodal Reasoning with Scenario Awareness, Document Understanding, and Multi-Step Computation* ([DOI](https://doi.org/10.1609/aaai.v40i30.39785)).
 
 **FinMMDocR** is a new bilingual multimodal benchmark for evaluating MLLMs in financial numerical reasoning, featuring real-world scenarios, visually-rich documents, and multi-step computations.
 
@@ -715,4 +715,23 @@ with open("./retrieved_results/bm25.json", "r") as f:
 for result in results:
     print(f"Question: {result['question_id']}")
     print(f"Retrieved {len(result['retrieved_results'])} documents")
+```
+
+## Citation
+
+If you use FinMMDocR, please cite the official AAAI 2026 paper:
+
+```bibtex
+@article{Tang_E_Li_Liu_Jia_Hao_Yang_Li_Tian_Hu_et_al_2026,
+  title   = {FinMMDocR: Benchmarking Financial Multimodal Reasoning with Scenario Awareness, Document Understanding, and Multi-Step Computation},
+  author  = {Tang, Zichen and E, Haihong and Li, Rongjin and Liu, Jiacheng and Jia, Linwei and Hao, Zhuodi and Yang, Zhongjun and Li, Yuanze and Tian, Haolin and Hu, Xinyi and et al.},
+  journal = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume  = {40},
+  number  = {30},
+  pages   = {25858--25866},
+  year    = {2026},
+  month   = {Mar.},
+  doi     = {10.1609/aaai.v40i30.39785},
+  url     = {https://ojs.aaai.org/index.php/AAAI/article/view/39785}
+}
 ```
