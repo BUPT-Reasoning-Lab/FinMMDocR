@@ -31,6 +31,7 @@ The FinMMDocR dataset is a comprehensive multimodal benchmark containing **1,200
 
 **Current Release**: Due to AAAI submission requirements limiting supplementary materials to 50MB, we currently provide:
 - **Complete Dataset**: Full `test.json` with all 1,200 questions and complete data structure
+- **Annotation Tags**: Full `final_taged_data.json` with fine-grained multi-dimensional labels for all 1,200 questions (for reproducing the paper's detailed grouped statistics)
 - **Sample Images**: One document (`0000`) with 10 associated images and all OCR results
 - **Full Dataset Images**: Complete image dataset for all 1,200 questions will be publicly released after paper acceptance
 
@@ -120,6 +121,51 @@ The `evidence` field tracks which visual elements are relevant:
 - `python_solution`: Expert-written Python code with clear variable names and execution logic
 - `ground_truth`: Numerical answer (typically float) derived from executing the solution
 - `source_id`: Specific identifier linking to the source document
+
+### Annotation Tags (`final_taged_data.json`)
+
+`data/final_taged_data.json` complements `test.json` with fine-grained annotation labels for every question. These tags make it easy for readers to reproduce the paper's detailed multi-dimensional grouped statistics (e.g., by document length, cross-page reasoning, reasoning/extraction steps, and scenario attributes). Entries are aligned with `test.json` via `question_id` / `doc_id`, and `doc_type` uses the same English category names as in `test.json`.
+
+Example entry:
+
+```json
+{
+    "question_id": "test-0",
+    "doc_type": "Market Interpretation",
+    "doc_id": "0000",
+    "doc_language": "Chinese",
+    "pages_num": 15,
+    "evidence_type": "single",
+    "page_cross": "single",
+    "extraction_source": "single",
+    "extraction_num": 3,
+    "reasoning_num": 6,
+    "context_extraction_num": 0,
+    "doc_extraction_num": 3,
+    "computation_num": 3,
+    "evidence_group": ["table"],
+    "scenario_format": "with abstract",
+    "scenario_number": "1",
+    "scenario_type": "Asset & Equity Valuation"
+}
+```
+
+#### Annotation Field Reference
+
+| Field | Description |
+| --- | --- |
+| `pages_num` | Number of pages in the document associated with the question (Doc. Len. in the paper) |
+| `page_cross` | Whether the question requires cross-page analysis (`cross` / `single`) |
+| `extraction_num` | Total number of numerical extraction steps |
+| `reasoning_num` | Total number of reasoning steps |
+| `context_extraction_num` | Number of data-extraction steps from the question's contextual text |
+| `doc_extraction_num` | Number of data-extraction steps from the question's document |
+| `computation_num` | Number of numerical computation steps |
+| `scenario_format` | Scenario presentation type implied by the question: none (`no scenario`), explicit/concrete (`with concrete`), or implicit/abstract (`with abstract`) |
+| `scenario_number` | Number of fine-grained sub-scenarios under the annotated primary scenario type |
+| `scenario_type` | Type of the primary scenario (e.g., Asset & Equity Valuation, Financial Statement Analysis) |
+
+Additional related labels in the same file include `doc_language`, `evidence_type`, `extraction_source`, and `evidence_group`, which further support stratified analysis of evidence modality and language.
 
 ### Example Question Analysis
 
@@ -444,7 +490,8 @@ FinMMDocR/
 │   ├── images_15_1920/     # 1920px resolution images
 │   ├── images_15_3840/     # 3840px resolution images
 │   ├── texts/              # OCR results for each document
-│   └── test.json           # Main dataset file (1,200 questions)
+│   ├── test.json           # Main dataset file (1,200 questions)
+│   └── final_taged_data.json  # Fine-grained annotation tags for grouped statistics
 ├── models/                  # RAG embedding model parameters
 ├── outputs/                 # Inference and evaluation results
 │   ├── test/
@@ -467,6 +514,7 @@ FinMMDocR/
 - **`images_15_3840/`**: 3840px resolution variants for high-quality analysis
 - **`texts/`**: **OCR results for each document**, enabling text-based retrieval and analysis
 - **`test.json`**: Main dataset containing 1,200 multimodal financial reasoning questions
+- **`final_taged_data.json`**: Fine-grained annotation tags aligned with `test.json`, enabling reproduction of the paper's multi-dimensional grouped statistics
 
 #### 2. **`models/` - RAG Embedding Models**
 - **Purpose**: Stores parameters for RAG (Retrieval-Augmented Generation) embedding models
